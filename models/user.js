@@ -3,17 +3,17 @@ const { Schema, model } = require("mongoose");
 module.exports = model(
   "UserSchema",
   new Schema({
-    // email: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    //   trim: true,
-    // },
-    // password: {
-    //   type: String,
-    //   required: true,
-    //   trim: true,
-    // },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      trim: true,
+    },
 
     listGroups: [
       {
@@ -23,7 +23,7 @@ module.exports = model(
         },
         todos: [
           {
-            label: {
+            title: {
               type: String,
               required: true,
             },
@@ -32,16 +32,11 @@ module.exports = model(
               required: true,
               default: false,
             },
-            inProgres: {
-              type: Boolean,
-              default: false,
-              required: true,
-            },
           },
         ],
       },
     ],
-    //   userSetings: { theme: "red" },
-    // selectedGpoupId: String,
+
+    selectedGpoupId: Schema.Types.ObjectId,
   })
 );

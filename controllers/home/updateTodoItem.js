@@ -1,7 +1,7 @@
 const UserSchema = require("../../models/user");
 module.exports = async (req, res, id) => {
   const { selectedGpoupId } = req.body;
-  console.log(id);
+
   try {
     const user = await UserSchema.findById(req.session.user._id);
 

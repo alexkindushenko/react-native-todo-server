@@ -19,7 +19,7 @@ router.post("/", isAuth, async (req, res) => {
   }
 });
 
-router.put("/:id", isAuth, async (req, res) => {
+router.put("/:id", isAuth, (req, res) => {
   try {
     updateTodoItem(req, res, req.params.id);
   } catch (error) {
@@ -27,9 +27,9 @@ router.put("/:id", isAuth, async (req, res) => {
   }
 });
 
-router.delete("/:id", isAuth, async (req, res) => {
+router.delete("/:id", isAuth, (req, res) => {
   try {
-    deleteTodoItem(req, res);
+    deleteTodoItem(req, res, req.params.id);
   } catch (error) {
     console.log("Error");
   }

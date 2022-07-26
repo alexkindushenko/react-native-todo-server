@@ -1,17 +1,17 @@
 const { Router } = require("express");
 const router = Router();
 
-const addNewGroup = require("../controllers/group/addNewGroup");
+const addTodoGroup = require("../controllers/group/addTodoGroup");
+const deleteTodoGroup = require("../controllers/group/deleteTodoGroup");
 
-router.patch("/", async (req, res) => {
-  sendTodoList(req, res);
+const isAuth = require("../midlevare/isAuth");
+
+router.delete("/:id", isAuth, async (req, res) => {
+  deleteTodoGroup(req, res, req.params.id);
 });
-router.post("/", async (req, res) => {
-  try {
-    addNewGroup(req, res);
-  } catch (error) {
-    console.log("Error");
-  }
+
+router.post("/", isAuth, (req, res) => {
+  addTodoGroup(req, res);
 });
 
 module.exports = router;

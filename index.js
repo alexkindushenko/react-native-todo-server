@@ -32,8 +32,9 @@ app.use(
 app.use(express.json());
 // dev
 app.use((req, res, next) => {
-  console.log("body---");
-  console.log(req.body);
+  console.log("body---", req.body);
+  console.log(req.path);
+  console.log(req.method);
 
   setTimeout(() => next(), 1000);
 });

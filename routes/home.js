@@ -21,7 +21,7 @@ router.post("/", isAuth, async (req, res) => {
 
 router.put("/:id", isAuth, async (req, res) => {
   try {
-    updateTodoItem(req, res);
+    updateTodoItem(req, res, req.params.id);
   } catch (error) {
     console.log("Error");
   }
